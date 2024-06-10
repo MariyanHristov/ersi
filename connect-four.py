@@ -1,19 +1,5 @@
-ROWS = 6
-COLS = 7
-
-directions = [
-    (0, 1),  # Horizontal
-    (1, 0),  # Vertical
-    (1, 1),  # Diagonal \
-    (1, -1)  # Diagonal /
-]
-
-
-class FullColError(Exception):
-    pass
-
-class OutOfRangeError(Exception):
-    pass
+from constants import *
+from errors import *
 
 def get_player_choice(board, player):
     def check_number_fits_size(player_column):
@@ -49,7 +35,7 @@ def get_choice_coordinates(board, choice, player):
     return None, None
 
 def check_for_winner(matrix, row_index, col_index, player):
-    for row_direction, col_direction in directions:
+    for row_direction, col_direction in DIRECTIONS:
         connect_count = 1
 
         for i in range(1, 4):
